@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Process Scheduling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Process Scheduling Simulator</h1>
+      <p>A visual tool for understanding CPU scheduling algorithms</p>
+    </div>
+
+    <div class="form-section">
+      <div class="form-group">
+        <input type="text" id="id" placeholder="Process ID">
+        <input type="number" id="arrival" placeholder="Arrival Time">
+        <input type="number" id="burst" placeholder="Burst Time">
+        <input type="number" id="priority" placeholder="Priority (higher value = higher priority)">
+        <button onclick="addProcess()">Add Process</button>
+      </div>
+      <div class="form-group">
+        <select id="algorithm">
+          <option value="FCFS">First Come First Serve (FCFS)</option>
+          <option value="SJF">Shortest Job First (SJF)</option>
+          <option value="SRTF">Shortest Remaining Time First (SRTF)</option>
+          <option value="RR">Round Robin (RR)</option>
+          <option value="Priority">Non-Preemptive Priority</option>
+        </select>
+        <button onclick="runSimulation()">Run Simulation</button>
+      </div>
+    </div>
+
+    <table id="processTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Arrival Time</th>
+          <th>Burst Time</th>
+          <th>Priority</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="avgMetrics" class="metrics-card"></div>
+
+    <div id="readyQueue" class="metrics-card">
+      <h3>Ready Queue States</h3>
+      <table id="readyQueueTable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Queue</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="results" class="metrics-card">
+      <h3>Results</h3>
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Process ID</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th>Response Time</th>
+            <th>Turnaround Time</th>
+            <th>Completion Time</th>
+            <th>Waiting Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="gantt-chart" id="ganttChart">
+      <h3>Gantt Chart</h3>
+      <div id="chart"></div>
+    </div>
+
+    <div class="time-graph" id="timeGraph">
+      <h3>Process Timing Metrics Comparison</h3>
+      <div class="time-graph-legend">
+        <div><span style="color: #3498db;">● Blue Line:</span> Completion Time</div>
+        <div><span style="color: #2ecc71;">● Green Line:</span> Turnaround Time</div>
+        <div><span style="color: #e74c3c;">● Red Line:</span> Waiting Time</div>
+      </div>
+      <div id="graph"></div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
